@@ -138,16 +138,12 @@ Using our Python Interactive simulator, five testing scenarios are validated dyn
 2. Create the three INCLUDE programs.
 3. Paste code into respective segments, activate, and press **F8**.
 
-### 2️⃣ Fallback: Prototype Emulator (If SAP GUI is unavailable)
-Because evaluators cannot directly access your SAP development server, a local prototype representation is provided:
-```bash
-# 1. Install dependencies
-pip install -r requirements.txt
+### 2️⃣ Web Prototype Simulator (No SAP GUI Required)
+Because evaluators cannot directly access your SAP development server, a local prototype representation is provided via `index.html`. 
+The `index.html` file doubles as a Vercel-ready Single Page Application (SPA). It uses JavaScript to natively simulate the ABAP `INNER JOIN` and `COLLECT` statements without requiring Python or backend servers.
 
-# 2. Run the interactive Streamlit ALV clone
-streamlit run app.py
-```
-> This opens a beautiful web-based interface mirroring the exact data flow of the ABAP scenario.
+- **Local Use:** Simply double-click `index.html` in your browser.
+- **Web Use:** Deploy the folder securely to Vercel as a static site.
 
 ---
 
@@ -156,10 +152,8 @@ streamlit run app.py
 VendorPurchaseAnalysis/
 │
 ├── *.abap                            ← Core SAP Code blocks (ALV, TOP, SEL, F01)
-├── app.py                            ← Fully interactive Streamlit ABAP simulator
-├── requirements.txt                  ← Dependencies for Streamlit
 ├── 23051628_Project_Documentation.pdf← Formal SAP Capstone PDF Report
-├── index.html                        ← PDF Generation Template & Web Portal
+├── index.html                        ← PDF Generation Template & Vercel Web Prototype
 ├── sap_alv_screenshot.png            ← SAP GUI execution proof
 └── README.md
 ```
