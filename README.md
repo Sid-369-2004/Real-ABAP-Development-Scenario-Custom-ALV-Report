@@ -1,4 +1,4 @@
-# Real ABAP Development Scenario — Custom ALV Report
+# Final Project: Vendor Purchase Analysis — Custom ALV Report (SAP MM)
 
 **Developer Details:**
 - **Name:** Siddharth Sonkar
@@ -6,17 +6,24 @@
 - **Batch/Program:** B.Tech in CSE
 
 ## Project Overview
-This project presents an end-to-end implementation of a Custom ALV (ABAP List Viewer) Report in SAP ABAP. The report fetches live Sales Order data (Sales Header - VBAK, Item Details - VBAP, and Material Description - MAKT) and securely presents it in an interactive ALV Grid format.
+This project presents an end-to-end implementation of a Vendor Purchase Analysis report in SAP ABAP (MM Module). The report aggregates and displays vendor-wise purchase analytics using an Object-Oriented ALV (ABAP List Viewer) approach (`cl_salv_table`). It extracts data from Purchasing Documents (EKKO/EKPO) and the Vendor Master (LFA1).
 
-## Execution Requirements
-1. SAP ECC or S/4HANA System access.
-2. ABAP Workbench (SE38/SE80) with a developer key.
-3. Import the code into a local object/package.
+## Scope & Functional Details
+The report determines the total spend and transaction count for vendors across specified date ranges.
 
-## Features
-- Dynamic Selection Screen for input fields.
-- Inner JOINs and Left Outer JOINs for optimal database fetching.
-- Grid Layout with zebra crossing and dynamic column optimization.
-- Auto-summation features for key numeric fields.
+**Output Fields:**
+- Vendor ID (`LIFNR`)
+- Vendor Name (`NAME1`)
+- Number of Purchase Orders (`PO_COUNT`)
+- Total Purchase Amount (`TOTAL_AMT`)
+- Last Purchase Date (`LAST_PDATE`)
+- Currency (`WAERS`)
 
-Feel free to review the attached PDF documentation (`23051628_Project_Report.pdf`) for deeper insights.
+## Logical Project Structure (SAP ABAP)
+This project follows professional SAP coding guidelines by segregating concerns into explicit INCLUDE files:
+- `ZMM_VENDOR_ALV.abap`: Main Execution driver
+- `ZMM_VENDOR_TOP.abap`: Type pools and Global field declarations
+- `ZMM_VENDOR_SEL.abap`: Selection screen UI components
+- `ZMM_VENDOR_F01.abap`: Data extraction, aggregation logic, and Object-Oriented ALV factory generation.
+
+Please review the attached PDF documentation (`23051628_Project_Documentation.pdf`) for deeper insights.
