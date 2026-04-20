@@ -94,7 +94,6 @@ User executes ZMM_VENDOR_ALV (SE38)
 | **Language** | ABAP (Advanced Business Application Programming) |
 | **Platform** | SAP NetWeaver / SAP S/4HANA |
 | **UI Framework** | `CL_SALV_TABLE` — Object-Oriented ALV Grid |
-| **Web Simulator**| Python 3 (Streamlit, Pandas) for Web Prototyping |
 | **Development** | SE38 (ABAP Editor) |
 | **Compatibility**| SAP ECC 6.0 / S/4HANA |
 
@@ -139,8 +138,8 @@ Using our Python Interactive simulator, five testing scenarios are validated dyn
 2. Create the three INCLUDE programs.
 3. Paste code into respective segments, activate, and press **F8**.
 
-### 2️⃣ Run the Interactive Web Simulator (No SAP GUI Required)
-Because evaluators cannot directly access the SAP development system, a live Python clone is provided:
+### 2️⃣ Fallback: Prototype Emulator (If SAP GUI is unavailable)
+Because evaluators cannot directly access your SAP development server, a local prototype representation is provided:
 ```bash
 # 1. Install dependencies
 pip install -r requirements.txt
