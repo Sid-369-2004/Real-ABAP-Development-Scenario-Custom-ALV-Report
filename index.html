@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendor Purchase Analysis - SAP MM Project</title>
 
-    <!-- Modern Typography for Web -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
@@ -20,147 +19,51 @@
                 --glass-bg: rgba(15, 23, 42, 0.7);
                 --glass-border: rgba(255, 255, 255, 0.1);
             }
-            
             body {
-                margin: 0;
-                padding: 0;
-                font-family: 'Inter', sans-serif;
+                margin: 0; padding: 0; font-family: 'Inter', sans-serif;
                 background: linear-gradient(-45deg, #0f172a, #1e1b4b, #172554, #082f49);
-                background-size: 400% 400%;
-                animation: gradientBG 15s ease infinite;
-                color: var(--text);
-                line-height: 1.7;
+                background-size: 400% 400%; animation: gradientBG 15s ease infinite;
+                color: var(--text); line-height: 1.7;
             }
-
             @keyframes gradientBG {
-                0% {background-position: 0% 50%;}
-                50% {background-position: 100% 50%;}
-                100% {background-position: 0% 50%;}
+                0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;}
             }
-
             .container {
-                max-width: 900px;
-                margin: 40px auto;
-                padding: 40px;
-                background: var(--glass-bg);
-                backdrop-filter: blur(16px);
-                -webkit-backdrop-filter: blur(16px);
-                border: 1px solid var(--glass-border);
-                border-radius: 24px;
+                max-width: 900px; margin: 40px auto; padding: 40px;
+                background: var(--glass-bg); backdrop-filter: blur(16px);
+                border: 1px solid var(--glass-border); border-radius: 24px;
                 box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             }
-
-            /* Animations */
-            .fade-in {
-                animation: fadeIn 1.2s ease forwards;
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            @keyframes fadeIn {
-                to { opacity: 1; transform: translateY(0); }
-            }
-
-            h1, h2, .cover-title {
-                font-family: 'Outfit', sans-serif;
-                color: #ffffff;
-            }
-
+            .fade-in { animation: fadeIn 1.2s ease forwards; opacity: 0; transform: translateY(20px); }
+            @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+            h1, h2, .cover-title { font-family: 'Outfit', sans-serif; color: #ffffff; }
             h1 {
-                font-size: 2.2rem;
-                background: linear-gradient(to right, #60a5fa, #a78bfa);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                text-align: center;
-                margin-bottom: 30px;
+                font-size: 2.2rem; background: linear-gradient(to right, #60a5fa, #a78bfa);
+                -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+                text-align: center; margin-bottom: 30px;
             }
-
-            h2 {
-                font-size: 1.5rem;
-                margin-top: 40px;
-                border-bottom: 1px solid var(--glass-border);
-                padding-bottom: 10px;
-            }
-
-            p, ul {
-                font-size: 1.05rem;
-                color: #cbd5e1;
-            }
-
-            li {
-                margin-bottom: 10px;
-            }
-
-            img {
-                max-width: 100%;
-                border-radius: 12px;
-                border: 2px solid var(--glass-border);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-            
-            img:hover {
-                transform: scale(1.02);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            }
-
+            h2 { font-size: 1.5rem; margin-top: 40px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; }
+            p, ul, table { font-size: 1.05rem; color: #cbd5e1; }
+            table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
+            th, td { border: 1px solid var(--glass-border); padding: 12px; text-align: left; }
+            th { background: rgba(255,255,255,0.05); font-weight: bold; color: #a78bfa; }
+            img { max-width: 100%; border-radius: 12px; border: 2px solid var(--glass-border); transition: transform 0.3s ease; }
+            img:hover { transform: scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
             .code-block {
-                background: #020617;
-                padding: 20px;
-                border-radius: 12px;
-                font-family: 'Consolas', monospace;
-                color: #a5b4fc;
-                border-left: 4px solid #4f46e5;
-                overflow-x: auto;
+                background: #020617; padding: 20px; border-radius: 12px;
+                font-family: 'Consolas', monospace; color: #a5b4fc; border-left: 4px solid #4f46e5; overflow-x: auto;
             }
-
-            .cover-page {
-                text-align: center;
-                padding: 60px 0;
-                border-bottom: 1px solid var(--glass-border);
-                margin-bottom: 40px;
-            }
-
-            .cover-title {
-                font-size: 1rem;
-                letter-spacing: 4px;
-                text-transform: uppercase;
-                color: #94a3b8;
-                margin-bottom: 10px;
-            }
-
-            .cover-details {
-                margin-top: 40px;
-                display: flex;
-                justify-content: center;
-                gap: 30px;
-            }
-            
-            .badge {
-                background: rgba(255,255,255,0.1);
-                padding: 10px 20px;
-                border-radius: 50px;
-                font-size: 0.9rem;
-                color: #e2e8f0;
-            }
-
+            .cover-page { text-align: center; padding: 60px 0; border-bottom: 1px solid var(--glass-border); margin-bottom: 40px; }
+            .cover-title { font-size: 1rem; letter-spacing: 4px; text-transform: uppercase; color: #94a3b8; margin-bottom: 10px; }
+            .cover-details { margin-top: 40px; display: flex; justify-content: center; gap: 30px; }
+            .badge { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 50px; font-size: 0.9rem; color: #e2e8f0; }
             .launch-btn {
-                display: inline-block;
-                margin-top: 30px;
-                padding: 12px 28px;
-                background: linear-gradient(to right, #3b82f6, #6366f1);
-                color: white;
-                text-decoration: none;
-                border-radius: 50px;
-                font-family: 'Outfit', sans-serif;
-                font-weight: 600;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+                display: inline-block; margin-top: 30px; padding: 12px 28px;
+                background: linear-gradient(to right, #3b82f6, #6366f1); color: white;
+                text-decoration: none; border-radius: 50px; font-family: 'Outfit', sans-serif;
+                font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
             }
-            .launch-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
-            }
-
-            /* Hide print-specific page breaks on web */
+            .launch-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6); }
             .page-break { display: none; }
         }
 
@@ -169,108 +72,25 @@
            ========================================================= */
         @media print {
             @page {
-                size: A4;
-                margin: 20mm;
-                @bottom-right {
-                    content: counter(page);
-                    font-family: Arial, sans-serif;
-                    font-size: 12px;
-                }
+                size: A4; margin: 20mm;
+                @bottom-right { content: counter(page); font-family: Arial, sans-serif; font-size: 12px; }
             }
-            
-            body {
-                font-family: Arial, sans-serif !important;
-                font-size: 12px !important;
-                text-align: justify !important;
-                line-height: 1.6;
-                color: #000;
-                background: none;
-                counter-reset: page;
-            }
-
-            /* Hide Web Elements */
+            body { font-family: Arial, sans-serif !important; font-size: 12px !important; text-align: justify !important; line-height: 1.6; color: #000; background: none; counter-reset: page; }
             .launch-btn { display: none !important; }
-            .container {
-                box-shadow: none; border: none; padding: 0; margin: 0; background: none;
-            }
-
-            h1 {
-                font-size: 15px !important;
-                font-weight: bold;
-                margin-top: 24px;
-                margin-bottom: 12px;
-                text-align: center;
-                color: #000 !important;
-                background: none !important;
-                -webkit-background-clip: unset !important;
-                -webkit-text-fill-color: #000 !important;
-            }
-
-            h2 {
-                font-size: 14px !important;
-                font-weight: bold;
-                margin-top: 20px;
-                margin-bottom: 10px;
-                color: #000 !important;
-                border: none !important;
-            }
-
-            p, ul, li {
-                font-size: 12px !important;
-                color: #000 !important;
-                margin-bottom: 15px;
-            }
-
-            .page-break {
-                display: block !important;
-                page-break-after: always;
-            }
-
-            .cover-page {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: 80vh;
-                text-align: center;
-                border: none !important;
-            }
-
-            .cover-title {
-                font-size: 20px !important;
-                font-weight: bold;
-                margin-bottom: 20px;
-                color: #000 !important;
-            }
-
-            .cover-details {
-                font-size: 14px !important;
-                margin-top: 50px;
-                display: block !important;
-            }
-
-            .badge {
-                background: none; border: none; color: #000; display: block; margin-bottom: 5px; padding:0;
-            }
-
-            img {
-                max-width: 100%;
-                height: auto;
-                border: 1px solid #ccc;
-                margin: 20px 0;
-                page-break-inside: avoid;
-            }
-
-            .code-block {
-                background-color: #f4f4f4 !important;
-                padding: 10px;
-                border-left: 3px solid #666 !important;
-                font-family: Consolas, monospace !important;
-                font-size: 10px !important;
-                color: #000 !important;
-                white-space: pre-wrap;
-                page-break-inside: avoid;
-            }
+            .container { box-shadow: none; border: none; padding: 0; margin: 0; background: none; }
+            h1 { font-size: 15px !important; font-weight: bold; margin-top: 24px; margin-bottom: 12px; text-align: center; color: #000 !important; background: none !important; -webkit-background-clip: unset !important; -webkit-text-fill-color: #000 !important; }
+            h2 { font-size: 14px !important; font-weight: bold; margin-top: 20px; margin-bottom: 10px; color: #000 !important; border: none !important; }
+            p, ul, li, table { font-size: 12px !important; color: #000 !important; margin-bottom: 15px; }
+            table { width: 100%; border-collapse: collapse; }
+            th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+            th { font-weight: bold; }
+            .page-break { display: block !important; page-break-after: always; }
+            .cover-page { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 80vh; text-align: center; border: none !important; }
+            .cover-title { font-size: 20px !important; font-weight: bold; margin-bottom: 20px; color: #000 !important; }
+            .cover-details { font-size: 14px !important; margin-top: 50px; display: block !important; }
+            .badge { background: none; border: none; color: #000; display: block; margin-bottom: 5px; padding:0; }
+            img { max-width: 100%; height: auto; border: 1px solid #ccc; margin: 20px 0; page-break-inside: avoid; }
+            .code-block { background-color: #f4f4f4 !important; padding: 10px; border: left 3px solid #666 !important; font-family: Consolas, monospace !important; font-size: 10px !important; color: #000 !important; white-space: pre-wrap; page-break-inside: avoid; }
         }
     </style>
 </head>
@@ -283,7 +103,7 @@
         <div class="cover-title">PROJECT DOCUMENTATION</div>
         <h1>Vendor Purchase Analysis<br>Custom ALV Report (SAP MM)</h1>
         
-        <a href="https://share.streamlit.io/" target="_blank" class="launch-btn">▶️ Launch Interactive Simulator</a>
+        <a href="http://localhost:8501" target="_blank" class="launch-btn">▶️ Launch Interactive Simulator</a>
 
         <div class="cover-details">
             <span class="badge"><strong>Name:</strong> Siddharth Sonkar</span>
@@ -294,49 +114,95 @@
     
     <div class="page-break"></div>
 
-    <!-- PAGE 2: Problem & Solution -->
+    <!-- PAGE 2: Overview & Problem -->
     <h1>1. Introduction & Title</h1>
     <p><strong>Title:</strong> Vendor Purchase Analysis — Custom ALV Report (SAP MM)</p>
-    <p>This project documentation captures the end-to-end design and coding of a pure native ABAP software solution. Following an evaluator-friendly implementation blueprint, the project serves as a Vendor Purchase Analytics tool directly deployed on backend enterprise SAP servers using the <code>CL_SALV_TABLE</code> Object-Oriented ALV framework.</p>
+    <p>An advanced Vendor Purchase Analysis system built in SAP ABAP that dynamically aggregates PO transactions, calculates total vendor expenditure, and tracks the last interacted purchasing date using high-performance Native OpenSQL joins. Following an evaluator-friendly implementation blueprint, the project serves as an intelligence tool directly deployed on backend enterprise SAP servers using the <code>CL_SALV_TABLE</code> Object-Oriented ALV framework.</p>
 
-    <h2>2. Problem Statement</h2>
-    <p>In standard SAP environments, aggregating cumulative expenditure data tied to individual vendors across multiple Purchasing Documents requires execution of disparate queries or highly complex BI tool configuration. Standard transaction codes often fail to provide a consolidated real-time view combining the total monetary spend per vendor alongside the absolute count of purchase orders issued and the last purchasing activity date. Organizations require this consolidated intelligence immediately available within the ERP core itself (via SAP GUI) to evaluate vendor reliability, spend volume metrics, and supplier performance directly avoiding external system latency.</p>
+    <h2>2. System Overview Mapping</h2>
+    <table>
+        <tr>
+            <th>SAP Table</th>
+            <th>Data Represented</th>
+        </tr>
+        <tr>
+            <td><code>EKKO</code></td>
+            <td>Purchase Order Header (Dates, Currency, Company Code)</td>
+        </tr>
+        <tr>
+            <td><code>EKPO</code></td>
+            <td>Purchase Order Items (Material, Net Value)</td>
+        </tr>
+        <tr>
+            <td><code>LFA1</code></td>
+            <td>Vendor Master Data (Vendor Name, Identifiers)</td>
+        </tr>
+    </table>
+
+    <h2>3. Problem Statement</h2>
+    <p>In standard SAP environments, aggregating cumulative expenditure data tied to individual vendors across multiple Purchasing Documents requires execution of disparate queries or highly complex BI tool configuration.</p>
     
-    <h2>3. Solution and Features</h2>
-    <p>The proposed solution delivers a dedicated Custom ALV Report spanning the Materials Management (MM) landscape. The underlying architecture systematically taps into EKKO, EKPO, and LFA1 standard data tables.</p>
-    <p><strong>Core Features:</strong></p>
-    <ul>
-        <li><strong>Unified Selection Screen:</strong> Subsets queries efficiently utilizing <code>Company Code (BUKRS)</code>, <code>Date Range (BEDAT)</code>, and parameterized filters for the <code>Vendor ID</code>.</li>
-        <li><strong>Data Extraction Logic:</strong> Enforces highly efficient database querying linking the Purchase Header (EKKO) Item descriptions (EKPO) and Vendor Masters (LFA1) via <code>INNER JOIN</code> clauses directly offloading strain from the application memory.</li>
-        <li><strong>Aggregation Protocols:</strong> The implementation harnesses <code>LOOP</code> routines coupled with <code>COLLECT</code> keywords. This safely sums the total financial transaction bounds grouping natively by the primary vendor key.</li>
-        <li><strong>OO ALV GUI Interface:</strong> Exceeding traditional FM-based arrays (<code>REUSE_ALV_GRID_DISPLAY</code>), the program deploys native ABAP Objects using class <code>CL_SALV_TABLE</code>. This grants an automated, flexible, dynamically sized Zebra-striped ALV container perfectly optimized out of the box with custom labeled column designations.</li>
-    </ul>
+    <table>
+        <tr>
+            <th>Issue</th>
+            <th>Business Impact</th>
+        </tr>
+        <tr>
+            <td>Disconnected PO reporting</td>
+            <td>Procurement teams cannot quickly see total vendor spend safely.</td>
+        </tr>
+        <tr>
+            <td>Lack of frequency metrics</td>
+            <td>Difficulty identifying supplier usage frequency resulting in poor negotiation metrics.</td>
+        </tr>
+        <tr>
+            <td>Time-consuming extracts</td>
+            <td>Reliance on outdated manual Excel downloads spanning `ME2N`/`ME2L`.</td>
+        </tr>
+    </table>
 
     <div class="page-break"></div>
 
-    <!-- PAGE 3: Tech Stack & Code -->
-    <h2>4. Tech Stack</h2>
-    <p>The system leverages foundational ABAP standards aligned intimately with standard SAP certification parameters.</p>
-    <ul>
-        <li><strong>Platform Layer:</strong> SAP Application Server ABAP.</li>
-        <li><strong>Data Model Layer:</strong> SAP OpenSQL. Interaction confined exclusively to <code>EKKO</code>, <code>EKPO</code>, and <code>LFA1</code>.</li>
-        <li><strong>Code Modularity:</strong> Utilizing logical file modularization (<code>ZMM_VENDOR_TOP</code>, <code>ZMM_VENDOR_SEL</code>, <code>ZMM_VENDOR_F01</code>).</li>
-        <li><strong>User Interface Paradigm:</strong> SAP GUI integrated ALV utilizing ABAP Objects paradigms.</li>
-    </ul>
+    <!-- PAGE 3: Architecture & Tech Stack -->
+    <h2>4. Program Flow Architecture</h2>
+    <p>User executes ZMM_VENDOR_ALV (SE38) ➝ Selection Screen (Company Code / Vendor ID / Date Range) ➝ FORM get_data (Optimized INNER JOIN from EKKO/EKPO/LFA1) ➝ FORM process_data (COLLECT Aggregations calculating TOTAL_AMT) ➝ FORM display_alv (CL_SALV_TABLE Object Grid Output).</p>
 
-    <h2>5. Technical Implementation & Approach</h2>
-    <p>Constructed utilizing professional Modular ABAP architecture, operations are abstracted across individual INCLUDES. This prevents monolithic blocks of code.</p>
-    <p>The internal processing logic handles complex numerical aggregation. Notice below how the program iterates and utilizes the <code>COLLECT</code> routine for automated numerical compounding and specific conditional checks to establish the exact maximum date of the latest vendor correspondence.</p>
+    <h2>5. Tech Stack</h2>
+    <table>
+        <tr>
+            <th>Component</th>
+            <th>Detail</th>
+        </tr>
+        <tr>
+            <td><strong>Language</strong></td>
+            <td>ABAP (Advanced Business Application Programming)</td>
+        </tr>
+        <tr>
+            <td><strong>Platform</strong></td>
+            <td>SAP NetWeaver / SAP S/4HANA</td>
+        </tr>
+        <tr>
+            <td><strong>UI Framework</strong></td>
+            <td><code>CL_SALV_TABLE</code> — Object-Oriented ALV Grid</td>
+        </tr>
+        <tr>
+            <td><strong>Web Simulator</strong></td>
+            <td>Python 3 (Streamlit, Pandas) for Web Interactive Prototyping</td>
+        </tr>
+    </table>
+
+    <h2>6. Technical Implementation Logic</h2>
+    <p>Constructed utilizing professional Modular ABAP architecture, operations are abstracted across individual INCLUDES. Notice below how the program iterates and utilizes the <code>COLLECT</code> routine for automated numeric compounding.</p>
     <div class="code-block">
 FORM process_data.
   CLEAR gt_final.
   LOOP AT gt_data INTO gs_data.
     gs_final-lifnr = gs_data-lifnr.
     gs_final-name1 = gs_data-name1.
-    gs_final-waers = gs_data-waers.
     gs_final-total_amt = gs_data-netwr.
     gs_final-po_count = 1.
     gs_final-last_pdate = gs_data-bedat.
+    
     COLLECT gs_final INTO gt_final.
   ENDLOOP.
 
@@ -354,29 +220,37 @@ ENDFORM.
 
     <div class="page-break"></div>
 
-    <!-- PAGE 4: Screenshots & Unique Points -->
-    <h2>6. Screenshots</h2>
+    <!-- PAGE 4: Screenshots & Simulation -->
+    <h2>7. Execution Proof & Screenshots</h2>
     <p>The following screenshot represents the execution capability of the OO ALV grid output displaying unified Vendor Spend analytics natively integrated in SAP GUI, complete with a striped layout and sorted hierarchies.</p>
-    
     <img src="sap_alv_screenshot.png" alt="SAP GUI ALV Grid Screenshot" />
 
-    <h2>7. Unique Selling Points (USP)</h2>
-    <p>This implementation was chosen heavily based on its status as an optimal best-practice evaluation tool:</p>
-    <ul>
-        <li><strong>Pure Native ABAP:</strong> Focuses directly on foundational development core skills avoiding cumbersome dependencies into external configuration modules. It targets high-yield technical demonstration domains.</li>
-        <li><strong>Superior ALV Mechanics:</strong> Utilizing Class components (<code>CL_SALV_TABLE</code>) instead of outdated Function Modules acts as proof to modern coding methodologies while lowering long term program error risks.</li>
-        <li><strong>Elegant Structuring:</strong> Establishing Top, Selection, and Subroutine includes directly simulates how large scale, mission-critical operational projects are logically framed at Enterprise deployment level.</li>
-    </ul>
+    <h2>8. Simulator Testing Details</h2>
+    <p>As verified systematically, the program accounts for varying data constraints during runtime generation:</p>
+    <table>
+        <tr>
+            <th>Input Condition</th>
+            <th>Processed Output Status</th>
+        </tr>
+        <tr>
+            <td>Valid Filters (High Match)</td>
+            <td>Successfully Aggregates ALL numeric conditions cleanly.</td>
+        </tr>
+        <tr>
+            <td>Invalid Filters (Zero Match)</td>
+            <td>Issues Warning/Empty Grid Exception reliably.</td>
+        </tr>
+    </table>
 
     <div class="page-break"></div>
 
     <!-- PAGE 5: Future Improvements -->
-    <h2>8. Future Improvements</h2>
-    <p>Despite the rigid reliability of the current iteration, continued lifecycle developments have straightforward expansion routes:</p>
+    <h2>9. Future Improvements</h2>
     <ul>
         <li><strong>High-Spend Highlighting (Colorization):</strong> Implementation of specific styling logic into the Custom ALV array that conditionally applies Red or Green coloring to <code>TOTAL_AMT</code> metrics exceeding localized thresholds.</li>
-        <li><strong>Interactive GUI Actions:</strong> Binding event handler routines traversing ALV lines natively back to SAP transaction codes, specifically enabling double-clicking to rapidly open the corresponding <code>ME23N</code> (Display Purchase Order) environment immediately.</li>
+        <li><strong>Interactive GUI Actions:</strong> Binding event handler routines traversing ALV lines natively back to SAP transaction codes, specifically enabling double-clicking to rapidly open the corresponding <code>ME23N</code> environment immediately.</li>
         <li><strong>Excel Download Enhancement:</strong> Providing implicit integration channels granting rapid single-click spreadsheet outputs directly from the program selection menu bypassing manual ALV system export configurations.</li>
+        <li><strong>Live Dashboard Deployment:</strong> Migrating the simulation ABAP routines towards a complete SAP Fiori Analytical GUI.</li>
     </ul>
 
     <p style="text-align: center; margin-top: 50px; color: #64748b; font-size: 0.9rem;">--- End of Documentation ---</p>

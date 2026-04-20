@@ -1,61 +1,177 @@
-# 📊 Vendor Purchase Analysis — Custom ALV Report (SAP MM)
+> An advanced **Vendor Purchase Analysis system** built in SAP ABAP that dynamically aggregates PO transactions, calculates total vendor expenditure, and tracks the last interacted purchasing date using high-performance Native OpenSQL joins.
 
-![SAP ABAP](https://img.shields.io/badge/SAP-ABAP-blue?style=for-the-badge&logo=sap)
-![Module](https://img.shields.io/badge/Module-Material_Management_(MM)-success?style=for-the-badge)
-![UI](https://img.shields.io/badge/UI-OO_ALV-orange?style=for-the-badge)
-
-A fully-functional, enterprise-grade Custom ALV Report developed in pure native SAP ABAP, designed to deliver high-level vendor expenditure analytics within the SAP Materials Management (MM) ecosystem. 
-
-This repository serves as my **Final Capstone Project** submission.
+![ABAP](https://img.shields.io/badge/Language-ABAP-0077CC?style=flat-square&logo=sap&logoColor=white)
+![SAP](https://img.shields.io/badge/Platform-SAP%20S%2F4HANA-1A9C3E?style=flat-square&logo=sap&logoColor=white)
+![ALV](https://img.shields.io/badge/UI-CL__SALV__TABLE-6C3FC4?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Complete-2ea043?style=flat-square)
 
 ---
 
-## 👨‍💻 Developer Details
-- **Name:** Siddharth Sonkar
-- **Roll Number:** 23051628
-- **Batch/Program:** B.Tech in CSE
+## 📋 Table of Contents
+- [Overview](#-overview)
+- [Problem Statement](#-problem-statement)
+- [How It Works](#-how-it-works)
+- [Tech Stack](#-tech-stack)
+- [Program Structure](#-program-structure)
+- [Test Cases (Simulation)](#-test-cases-simulation)
+- [Getting Started](#-getting-started)
+- [Project Structure](#-project-structure)
+- [Future Improvements](#-future-improvements)
 
 ---
 
-## 📖 Project Overview
-In standard SAP enterprise environments, visualizing aggregated expenditure data across multiple purchasing documents for individual vendors is often complicated. This custom ABAP solution bridges that gap natively within the SAP GUI. 
+## 🌐 Overview
+This project targets the **SAP Materials Management (MM)** domain. It delivers a deeply integrated custom ALV report that provides consolidated enterprise intelligence on vendor expenditure without relying on separate Business Intelligence (BI) platforms.
 
-The software securely interfaces with `EKKO`, `EKPO`, and `LFA1` database tables, processing raw transactional metrics into a high-performance, conditionally aggregated Object-Oriented ALV output (`CL_SALV_TABLE`). 
-
-## ✨ Key Features
-- **OO ALV Architecture:** Built utilizing modern class-based paradigms rather than outdated `REUSE_ALV_GRID_DISPLAY` function modules.
-- **Dynamic Selection Screen:** Filters data efficiently via Company Code (`BUKRS`), Date Range (`BEDAT`), and parameterized Vendor IDs.
-- **High-Performance OpenSQL:** Deploys `INNER JOIN` clauses strictly adhering to enterprise optimization protocols, minimizing application server memory strain.
-- **Automated Aggregations:** Computes Total Monitory Spend (`TOTAL_AMT`), Total PO counts (`PO_COUNT`), and verifies the latest Vendor interaction timestamp (`LAST_PDATE`).
+| SAP Table | Data Represented |
+|-----------|-----------------|
+| `EKKO` | Purchase Order Header (Dates, Currency, Company Code) |
+| `EKPO` | Purchase Order Items (Material, Net Value) |
+| `LFA1` | Vendor Master Data (Vendor Name, Identifiers) |
 
 ---
 
-## 🛠️ Logical Code Structure
-The system is abstracted utilizing standard SAP Includes, mimicking legitimate enterprise-deployment architecture:
+## ❗ Problem Statement
+In standard SAP environments, accessing aggregated spend data per vendor involves cross-referencing multiple standard transaction codes, causing severe bottlenecks.
 
-| File Name | Functional Purpose |
-|-----------|--------------------|
-| [`ZMM_VENDOR_ALV.abap`](ZMM_VENDOR_ALV.abap) | Main Execution Driver |
-| [`ZMM_VENDOR_TOP.abap`](ZMM_VENDOR_TOP.abap) | Global Field Declarations & Type Pools |
-| [`ZMM_VENDOR_SEL.abap`](ZMM_VENDOR_SEL.abap) | Selection Screen UI Definition |
-| [`ZMM_VENDOR_F01.abap`](ZMM_VENDOR_F01.abap) | SQL Extractions, Internal Table Aggregations & OO-ALV Factory |
+| Issue | Business Impact |
+|-------|----------------|
+| Disconnected PO reporting | Procurement teams cannot quickly see total vendor spend. |
+| Lack of consolidated frequency metrics | Difficulty identifying how often a supplier is used. |
+| Time-consuming data extraction | Reliance on outdated manual Excel downloads spanning `ME2N`/`ME2L`. |
 
----
-
-## 📸 Output Visualization
-Below is a demonstration of the executed program in the SAP GUI, highlighting optimal data structure, calculated fields, and integrated formatting.
-
-![SAP GUI ALV Report](sap_alv_screenshot.png)
+This custom ALV automates the process and groups financial totals natively at the database and application layer.
 
 ---
 
-## 🚀 Execution Guide
-To replicate this transaction in your own SAP Sandpit / Development environment:
-1. Open Transaction `SE38` (ABAP Editor).
-2. Create the Includes listed in the table above.
-3. Paste the respective source code into each include.
-4. Activate the primary driver `ZMM_VENDOR_ALV`.
-5. Execute (F8) and insert applicable data ranges dynamically from your system.
+### Data Aggregation Logic
+```abap
+LOOP AT gt_data INTO gs_data.
+  gs_final-lifnr = gs_data-lifnr.
+  gs_final-name1 = gs_data-name1.
+  gs_final-total_amt = gs_data-netwr.
+  gs_final-po_count = 1.
+  
+  " Aggregate Values
+  COLLECT gs_final INTO gt_final.
+  
+  " Assign Latest Date
+  IF gs_data-bedat > gs_final-last_pdate.
+     gs_final-last_pdate = gs_data-bedat.
+  ENDIF.
+ENDLOOP.
+```
+
+### Program Flow
+```text
+User executes ZMM_VENDOR_ALV (SE38)
+           │
+           ▼
+     Selection Screen
+     (Company Code / Vendor ID / Date Range)
+           │
+           ▼
+     FORM get_data (ZMM_VENDOR_F01)
+     SELECT FROM EKKO INNER JOIN EKPO INNER JOIN LFA1
+           │
+           ▼
+     FORM process_data
+     ├── Compute TOTAL_AMT using COLLECT
+     ├── Compute PO_COUNT
+     └── Determine MAX(BEDAT) -> LAST_PDATE
+           │
+           ▼
+     FORM display_alv
+     CL_SALV_TABLE → ALV Grid Output
+     (Sort / Filter / Highlight)
+```
 
 ---
-*Please review the attached formally structured `23051628_Project_Documentation.pdf` file for comprehensive technical insights and future enhancement milestones.*
+
+## 🔧 Tech Stack
+| Component | Detail |
+|-----------|--------|
+| **Language** | ABAP (Advanced Business Application Programming) |
+| **Platform** | SAP NetWeaver / SAP S/4HANA |
+| **UI Framework** | `CL_SALV_TABLE` — Object-Oriented ALV Grid |
+| **Web Simulator**| Python 3 (Streamlit, Pandas) for Web Prototyping |
+| **Development** | SE38 (ABAP Editor) |
+| **Compatibility**| SAP ECC 6.0 / S/4HANA |
+
+---
+
+## 🧩 Program Structure
+The main program `ZMM_VENDOR_ALV` is split into professional enterprise-level INCLUDES:
+
+```text
+ZMM_VENDOR_ALV (Driver Program)
+│
+├── ZMM_VENDOR_TOP.abap
+│     Global Data Declarations, Type Pools, Table Work Areas
+│
+├── ZMM_VENDOR_SEL.abap
+│     SELECT-OPTIONS (Date, Vendor) and PARAMETERS (Company Code)
+│
+└── ZMM_VENDOR_F01.abap
+      FORM get_data (Optimized INNER JOIN)
+      FORM process_data (COLLECT Aggregations)
+      FORM display_alv (CL_SALV_TABLE Factory & Display)
+```
+
+---
+
+## 🧪 Test Cases (Simulation)
+Using our Python Interactive simulator, five testing scenarios are validated dynamically:
+
+| Vendor ID | Total POs Available | Filter Date | Final PO Count | Total Spend | Expected Result |
+|-----------|--------------------|-------------|----------------|-------------|-----------------|
+| `V001` | 30 | Past 1 Year | 30 | ~$550,000 | ✅ Aggregated accurately |
+| `V002` | 25 | Past 1 Year | 25 | ~$210,000 | ✅ Sorted descending |
+| `V003` | 10 | Past 1 Month|  0 | $0.00 | 🟡 No data found warning |
+| `ALL` | 150| Past 1 Year | 150 | ~$1M+ | ✅ Full enterprise summary output |
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Run inside SAP GUI
+1. Open transaction **SE38** and create main program `ZMM_VENDOR_ALV`.
+2. Create the three INCLUDE programs.
+3. Paste code into respective segments, activate, and press **F8**.
+
+### 2️⃣ Run the Interactive Web Simulator (No SAP GUI Required)
+Because evaluators cannot directly access the SAP development system, a live Python clone is provided:
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Run the interactive Streamlit ALV clone
+streamlit run app.py
+```
+> This opens a beautiful web-based interface mirroring the exact data flow of the ABAP scenario.
+
+---
+
+## 📁 Project Structure
+```text
+VendorPurchaseAnalysis/
+│
+├── *.abap                            ← Core SAP Code blocks (ALV, TOP, SEL, F01)
+├── app.py                            ← Fully interactive Streamlit ABAP simulator
+├── requirements.txt                  ← Dependencies for Streamlit
+├── 23051628_Project_Documentation.pdf← Formal SAP Capstone PDF Report
+├── index.html                        ← PDF Generation Template & Web Portal
+├── sap_alv_screenshot.png            ← SAP GUI execution proof
+└── README.md
+```
+
+---
+
+## 🔮 Future Improvements
+- [ ] **High-Spend Highlighting (Colorization)** — Add logic to `CL_SALV_TABLE` to color rows red if `TOTAL_AMT` exceeds threshold.
+- [ ] **Interactive GUI Actions** — Bind double-click events targeting ALV rows to call transaction `ME23N` directly.
+- [ ] **Chart Integrations** — Forward the ABAP internal table directly into an SAP Fiori Analytical chart object.
+- [ ] **Live Vercel Streamlit Hosting** — Continually update the online simulation instance.
+
+---
+*Developed under compliance with strict KIIT Capstone SAP Guidelines.*
